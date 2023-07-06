@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-
 body{
     font-family: 'Montserrat', sans-serif;
     font-weight:200;
+}
+
+.box{
+   min-height: calc(theme("spacing.formHeight") + 200px);
 }

@@ -11,6 +11,15 @@ module.exports = {
         primary:"#FFFFFF",
         secondary:"#000",
         terciary:"blue",
+        filter: "rgba(0, 0, 0, .5)"
+      },
+      backgroundImage:{
+        backgroundImage:"url(/bg-image.jpg)"
+      },
+      spacing:{
+        backgroundHeight:"1600px",
+        formHeight:"1300px",
+        inputWidth: "80%",
       }
     }
   },
