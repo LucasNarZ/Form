@@ -2,24 +2,28 @@
 
 import 'tailwindcss/tailwind.css';
 import { TextField, MenuItem } from "@mui/material"
-import { useForm } from 'react-hook-form';
+import { RegisterOptions, useForm } from 'react-hook-form';
+import { UseFormRegister, FieldErrors } from 'react-hook-form';
 
 
-type InputProps = {
+import React, { useEffect, useState } from 'react';
+
+interface InputProps{
     label: string;
     validation?: RegExp;
     type?: string;
     options?: Array<any>;
+    register?: any;
+    error?: any;
 }
 
-export const FormInput = ({ label, validation = /^$/, type = "write", options = [] }:InputProps):JSX.Element => {
-    const { register, formState:{errors} } = useForm();
-
+export const FormInput = ({ label, validation = /^$/, type = "write", options = [], error = true, register}:InputProps):JSX.Element => {
     return (
-        <>      
-            {type === "write" && 
-            <TextField id="outlined-basic" label={label} variant='outlined' className="w-inputWidth my-3"
-            {...register(label, {required:true, pattern:validation })}  />}
+        <React.Fragment>    
+                {type === "write" && 
+                <TextField id="outlined-basic" label={label} variant='outlined'  error={!!error} className="w-inputWidth my-3"
+                {...register(label, {required:true, pattern:validation})}  />}
+            
             {type === "select" &&
             <TextField select id="outlined-basic" label={label} variant='outlined' className="w-inputWidth my-3">
                 {options.map((item) => {
@@ -29,7 +33,7 @@ export const FormInput = ({ label, validation = /^$/, type = "write", options = 
                 })}
             </TextField>
             }
-        </>
+        </React.Fragment>
         
     )
 }

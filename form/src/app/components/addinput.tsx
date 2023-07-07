@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
-type AddInputProps = {
+interface AddInputProps{
     label:string;
 }
 
