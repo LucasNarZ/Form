@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { Container, Button, Box } from "@mui/material";
+import { Container, Button, Box, TextField } from "@mui/material";
 import { useForm } from 'react-hook-form';
 
 
@@ -13,14 +13,14 @@ import { FormInput } from './components/input';
 import { AddInput } from './components/addinput';
 
 export default function Home(){
-    const { handleSubmit,register, formState:{errors} } = useForm();
+    const { handleSubmit, register, formState:{errors} } = useForm();
     const router = useRouter();
 
     const onSubmit = (data:object) => {
-        console.log("a")
+        console.log(data)
     }
 
-
+    console.log(errors)
 
     return(
         <React.Fragment>
@@ -28,13 +28,23 @@ export default function Home(){
                 <Container className='bg-primary z-10 rounded-xl flex flex-col pb-20 items-center relative ' maxWidth="sm">
                     <h3 className='my-8 text-4xl'>Dev Form</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center w-full'>
-                        <FormInput label="Name" validation={/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/} error={errors.name} register={register}/>
-                        <FormInput label="Email" validation={/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/}  error={errors.email} register={register}/>
-                        <FormInput label="Phone" validation={/^[0-9]{7}$/}  error={errors.phone} register={register}/>
-                        <FormInput label="Years of experience" validation={/^[0-9]+$/}  register={register}/>
-                        <FormInput label="Field" type='select' options={["Front-End", "Back-End", "Mobile", "Other"]}/>
-                        <FormInput label="GitHub Profile Link" validation={/^github\.com\/[a-zA-Z0-9._%+-]+$/}  register={register}/>
-                        <FormInput label="Linkedin Profile Link" validation={/^github\.com\/[a-zA-Z0-9._%+-]+$/}   register={register}/>
+                        <TextField id="outlined-basic" label={"Name"} variant='outlined'  error={!!errors.name} className="w-inputWidth my-3"
+                        {...register("name", {required:true})} /> 
+
+                        <TextField id="outlined-basic" label={"Email"} variant='outlined'  error={!!errors.email} className="w-inputWidth my-3"
+                        {...register("email", {required:true, pattern:/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/})}  />
+
+                        <TextField id="outlined-basic" label={"Phone"} variant='outlined'  error={!!errors.phone} className="w-inputWidth my-3"
+                        {...register("phone", {required:true, pattern:/^[0-9]{7}$/})} />
+
+                        <TextField id="outlined-basic" label={"Years of Experience"} variant='outlined'  error={!!errors.name} className="w-inputWidth my-3" {...register("name", {required:true, pattern:/^[0-9]+$/})} /> 
+
+                        <FormInput label="Field" options={["Front-End", "Back-End", "Mobile", "Other"]}/>
+
+                        <TextField id="outlined-basic" label={"Git Hub Profile Link"} variant='outlined'  error={!!errors.github} className="w-inputWidth my-3" {...register("github", {required:true, pattern:/^github\.com\/[a-zA-Z0-9._%+-]+$/})} /> 
+
+                        <TextField id="outlined-basic" label={"Linkedin Profile Link"} variant='outlined'  error={!!errors.linkedin} className="w-inputWidth my-3" {...register("linkedin", {required:true, pattern:/^Linkedin\.com\/[a-zA-Z0-9._%+-]+$/})} /> 
+
                         <AddInput label="Skills(max 3)" />
                         <AddInput label="Projects Link(max 3)" />
                         <Button variant='outlined' className="z-20"  type="submit" sx={{
