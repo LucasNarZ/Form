@@ -37,8 +37,8 @@ export function AddInput({ label }:AddInputProps):JSX.Element{
             </Box>
             {list.map((name, index) => {
                 return(
-                        <Box className="flex items-center justify-center w-full">
-                            <TextField value={name} key={index}  className='w-[calc(80%-38px)] my-2' disabled onKeyDown={e => {
+                        <Box className="flex items-center justify-center w-full" key={index}>
+                            <TextField value={name}  className='w-[calc(80%-38px)] my-2' disabled onKeyDown={e => {
                                 console.log("AAAAAA");if(e.key === "Enter") create(newAdd);setNewAdd("");
                             }}/>
                             <CloseIcon fontSize='large' className="cursor-pointer" onClick={() => {

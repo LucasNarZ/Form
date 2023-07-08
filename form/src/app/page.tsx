@@ -18,9 +18,8 @@ export default function Home(){
 
     const onSubmit = (data:object) => {
         console.log(data)
+        router.push("/finish")
     }
-
-    console.log(errors)
 
     return(
         <React.Fragment>
@@ -29,7 +28,7 @@ export default function Home(){
                     <h3 className='my-8 text-4xl'>Dev Form</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center w-full'>
                         <TextField id="outlined-basic" label={"Name"} variant='outlined'  error={!!errors.name} className="w-inputWidth my-3"
-                        {...register("name", {required:true})} /> 
+                        {...register("name", {required:true, pattern:/^[a-zA-Z]+$/})}  />
 
                         <TextField id="outlined-basic" label={"Email"} variant='outlined'  error={!!errors.email} className="w-inputWidth my-3"
                         {...register("email", {required:true, pattern:/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/})}  />
@@ -37,13 +36,13 @@ export default function Home(){
                         <TextField id="outlined-basic" label={"Phone"} variant='outlined'  error={!!errors.phone} className="w-inputWidth my-3"
                         {...register("phone", {required:true, pattern:/^[0-9]{7}$/})} />
 
-                        <TextField id="outlined-basic" label={"Years of Experience"} variant='outlined'  error={!!errors.name} className="w-inputWidth my-3" {...register("name", {required:true, pattern:/^[0-9]+$/})} /> 
+                        <TextField id="outlined-basic" label={"Years of Experience"} variant='outlined'  error={!!errors.experience} className="w-inputWidth my-3" {...register("experience", {required:true, pattern:/^[0-9]+$/})} /> 
 
                         <FormInput label="Field" options={["Front-End", "Back-End", "Mobile", "Other"]}/>
 
-                        <TextField id="outlined-basic" label={"Git Hub Profile Link"} variant='outlined'  error={!!errors.github} className="w-inputWidth my-3" {...register("github", {required:true, pattern:/^github\.com\/[a-zA-Z0-9._%+-]+$/})} /> 
+                        <TextField id="outlined-basic" label={"Git Hub Profile Link"} variant='outlined'  error={!!errors.github} className="w-inputWidth my-3" {...register("github", {required:true, pattern:/^https:\/\/github\.com\/[a-zA-Z0-9._%+-]+$/})} /> 
 
-                        <TextField id="outlined-basic" label={"Linkedin Profile Link"} variant='outlined'  error={!!errors.linkedin} className="w-inputWidth my-3" {...register("linkedin", {required:true, pattern:/^Linkedin\.com\/[a-zA-Z0-9._%+-]+$/})} /> 
+                        <TextField id="outlined-basic" label={"Linkedin Profile Link"} variant='outlined'  error={!!errors.linkedin} className="w-inputWidth my-3" {...register("linkedin", {required:true, pattern:/^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9._%+-\/]+$/})} /> 
 
                         <AddInput label="Skills(max 3)" />
                         <AddInput label="Projects Link(max 3)" />

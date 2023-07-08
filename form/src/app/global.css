@@ -5,6 +5,12 @@ body{
     font-weight:200;
 }
 
-.box{
-   min-height: calc(theme("spacing.formHeight") + 200px);
+.bar{
+    transform: scale(0.4);
+    aspect-ratio: 2/1;
+}
+
+.pie{
+    transform: scale(0.3);
+    aspect-ratio: 1/1;
 }
