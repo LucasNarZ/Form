@@ -25,9 +25,9 @@ export default function Home(){
         <React.Fragment>
             <Box className="flex items-center bg-backgroundImage min-h-formHeight w-screen bg-center bg-clip-content bg-no-repeat bg-cover content-'' before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0  before:bg-filter before:mix-blend-multiply">
                 <Container className='bg-primary z-10 rounded-xl flex flex-col pb-20 items-center relative ' maxWidth="sm">
-                    <h3 className='my-8 text-4xl'>Dev Form</h3>
+                    <h3 className='my-8 text-4xl text-center'>Dev Form</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center w-full'>
-                        <TextField id="outlined-basic" label={"Name"} variant='outlined'  error={!!errors.name} className="w-inputWidth my-3"
+                        <TextField id="outlined-basic" label={"Name"} variant='outlined'  error={!!errors.name} className="w-inputWidth mt-3 mb-3"
                         {...register("name", {required:true, pattern:/^[a-zA-Z]+$/})}  />
 
                         <TextField id="outlined-basic" label={"Email"} variant='outlined'  error={!!errors.email} className="w-inputWidth my-3"
